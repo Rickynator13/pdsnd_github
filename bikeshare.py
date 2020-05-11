@@ -34,9 +34,9 @@ def get_filters():
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         try:
-            month = input('Which month would you like to explore data from: ').lower()
+            month = input('Which month would you like to filter data from: ').lower()
         except ValueError:
-            print("Sorry, I didn't understand that.")
+            print("Sorry, please try again.")
             continue
         months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
         if month in (months):
@@ -44,7 +44,6 @@ def get_filters():
         else:
             print("Not an appropriate choice.")
             continue
-
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
@@ -61,12 +60,10 @@ def get_filters():
             #We are happing with the value given
             break
 
-
-
     print('-'*40)
     return city, month, day
 
-#This function load the csv file into a DataFrame and convert dates into a datetime object.
+
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
@@ -89,7 +86,6 @@ def load_data(city, month, day):
     df['day_of_week'] =  df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
 
-
     # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding int
@@ -105,7 +101,6 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day.title()]
 
     return df
-
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -125,7 +120,6 @@ def time_stats(df):
     print('The most common start hours: {}'.format(popular_hour))
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
