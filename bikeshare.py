@@ -44,7 +44,6 @@ def get_filters():
             print("Not an appropriate choice.")
             continue
 
-
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         try:
@@ -60,11 +59,8 @@ def get_filters():
             #We are happing with the value given
             break
 
-
-
     print('-'*40)
     return city, month, day
-
 
 def load_data(city, month, day):
     """
@@ -88,7 +84,6 @@ def load_data(city, month, day):
     df['day_of_week'] =  df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
 
-
     # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding int
@@ -104,7 +99,6 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day.title()]
 
     return df
-
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -124,7 +118,6 @@ def time_stats(df):
     print('The most common start hours: {}'.format(popular_hour))
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
