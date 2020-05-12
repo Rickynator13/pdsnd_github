@@ -6,6 +6,10 @@ Bikeshare.py
 
 ### Description
 It allow users to explore bike rental data from different cities.
+e.g.
+- time statistics
+- station statistics
+- and more..
 
 ### Files used
 - bikeshare.py
